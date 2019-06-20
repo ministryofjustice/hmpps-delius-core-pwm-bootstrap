@@ -5,7 +5,7 @@
   </localeBundle>
   <properties type="config">
     <property key="saveConfigOnStart">true</property>
-    <property key="configPasswordHash">{{ 'changeme' | hash('blowfish') }}</property>
+    <property key="configPasswordHash">{{ 'changeme' | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) }}</property>
     <property key="configIsEditable">false</property>
     <property key="configEpoch">1</property>
   </properties>
