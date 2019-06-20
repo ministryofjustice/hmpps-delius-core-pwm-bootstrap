@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PwmConfiguration pwmVersion="1.8.0-SNAPSHOT" pwmBuild="40404965" xmlVersion="4" createTime="{{ ansible_date_time.date }} {{ ansible_date_time.time }} {{ ansible_date_time.tz_offset }}">
+  <localeBundle bundle="password.pwm.i18n.Display" key="Title_Application">
+    <value><![CDATA[National Delius - Account Self Service]]></value>
+  </localeBundle>
+  <properties type="config">
+    <property key="saveConfigOnStart">true</property>
+    <property key="configPasswordHash">{{ 'changeme' | hash('blowfish') }}</property>
+    <property key="configIsEditable">false</property>
+    <property key="configEpoch">1</property>
+  </properties>
+  <settings>
+    <setting key="template.ldap" syntax="SELECT">
+      <label>LDAP Vendor Default Settings</label>
+      <value><![CDATA[DEFAULT]]></value>
+    </setting>
+    <setting key="template.storage" syntax="SELECT">
+      <label>Storage Default Settings</label>
+      <value><![CDATA[LDAP]]></value>
+    </setting>
+    <setting key="ldap.profile.list" syntax="PROFILE">
+      <label>LDAP Directory Profiles</label>
+      <value><![CDATA[default]]></value>
+    </setting>
+    <setting key="ldap.serverUrls" syntax="STRING_ARRAY">
+      <label>LDAP URLs</label>
+      <value><![CDATA[{{ ldap_protocol }}://{{ ldap_host }}:{{ ldap_port }}]]></value>
+    </setting>
+    <setting key="ldap.proxy.username" syntax="STRING">
+      <label>LDAP Proxy User</label>
+      <value><![CDATA[{{ ldap_bind_user }}]]></value>
+    </setting>
+    <setting key="ldap.proxy.password" syntax="PASSWORD">
+      <label>LDAP Proxy Password</label>
+      <value plaintext="true">{{ ldap_bind_password }}</value>
+    </setting>
+    <setting key="ldap.rootContexts" syntax="STRING_ARRAY">
+      <label>LDAP Contextless Login Roots</label>
+      <value><![CDATA[{{ user_base }}]]></value>
+    </setting>
+    <setting key="ldap.testuser.username" syntax="STRING">
+      <label>LDAP Test User</label>
+      <value><![CDATA[cn=NDelius01,{{ user_base }}]]></value>
+    </setting>
+    <setting key="pwmAdmin.queryMatch" syntax="USER_PERMISSION" syntaxVersion="2">
+      <label>Administrator Permission</label>
+      <value>{"ldapBase":"{{ user_base }}","ldapQuery":"(cn=*)","type":"ldapQuery"}</value>
+    </setting>
+    <setting key="db.classname" syntax="STRING">
+      <label>Database Class</label>
+      <value />
+    </setting>
+    <setting key="db.url" syntax="STRING">
+      <label>Database Connection String</label>
+      <value />
+    </setting>
+    <setting key="db.username" syntax="STRING">
+      <label>Database User Name</label>
+      <value />
+    </setting>
+    <setting key="db.password" syntax="PASSWORD">
+      <label>Database Password</label>
+      <value />
+    </setting>
+    <setting key="pwm.publishStats.enable" syntax="BOOLEAN">
+      <label>Enable Anonymous Statistics Publishing</label>
+      <value>false</value>
+    </setting>
+    <setting key="pwm.publishStats.siteDescription" syntax="STRING">
+      <label>Site Description</label>
+      <value />
+    </setting>
+    <setting key="pwm.selfURL" syntax="STRING">
+      <label>Site URL</label>
+      <value><![CDATA[{{ site_url }}]]></value>
+    </setting>
+    <setting key="display.accountInformation" syntax="BOOLEAN">
+      <label>Show User Account Information</label>
+      <value>true</value>
+    </setting>
+    <setting key="display.showDetailedErrors" syntax="BOOLEAN">
+      <label>Show Detailed Error Messages</label>
+      <value>true</value>
+    </setting>
+    <setting key="display.idleTimeout" syntax="BOOLEAN">
+      <label>Show Idle Timeout Counter</label>
+      <value>true</value>
+    </setting>
+    <setting key="recovery.verificationMethods" syntax="VERIFICATION_METHOD">
+      <label>Verification Methods</label>
+      <value><![CDATA[{"methodSettings":{"PREVIOUS_AUTH":{"enabledState":"disabled"},"ATTRIBUTES":{"enabledState":"disabled"},"CHALLENGE_RESPONSES":{"enabledState":"disabled"},"TOKEN":{"enabledState":"required"},"OTP":{"enabledState":"disabled"},"REMOTE_RESPONSES":{"enabledState":"disabled"},"OAUTH":{"enabledState":"disabled"}},"minOptionalRequired":0}]]></value>
+    </setting>
+    <setting key="challenge.enable" syntax="BOOLEAN">
+      <label>Enable Setup Responses</label>
+      <value>false</value>
+    </setting>
+    <setting key="challenge.forceSetup" syntax="BOOLEAN">
+      <label>Force Response Setup</label>
+      <value>false</value>
+    </setting>
+    <setting key="password.policy.minimumLength" syntax="NUMERIC">
+      <label>Minimum Length</label>
+      <value>8</value>
+    </setting>
+    <setting key="password.policy.allowNumeric" syntax="BOOLEAN">
+      <label>Allow Numeric Characters</label>
+      <value>true</value>
+    </setting>
+    <setting key="password.policy.allowSpecial" syntax="BOOLEAN">
+      <label>Allow Special Characters</label>
+      <value>true</value>
+    </setting>
+    <setting key="password.policy.maximumUpperCase" syntax="NUMERIC">
+      <label>Maximum Uppercase</label>
+      <default />
+    </setting>
+    <setting key="password.policy.maximumLowerCase" syntax="NUMERIC">
+      <label>Maximum Lowercase</label>
+      <default />
+    </setting>
+    <setting key="password.policy.disallowCurrent" syntax="BOOLEAN">
+      <label>Disallow Current Password</label>
+      <value>false</value>
+    </setting>
+    <setting key="password.policy.disallowedValues" syntax="STRING_ARRAY">
+      <label>Disallowed Values</label>
+      <value />
+    </setting>
+  </settings>
+</PwmConfiguration>

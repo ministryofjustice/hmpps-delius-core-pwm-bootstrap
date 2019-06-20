@@ -1,0 +1,6 @@
+---
+# tasks file for hmpps-delius-core-pwm-bootstrap
+- name: Generate the config file
+  template:
+    src: PwmConfiguration.xml.j2
+    dest: '{{ config_location }}/PwmConfiguration.xml'
