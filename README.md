@@ -18,7 +18,7 @@ ldap_bind_user:     LDAP admin username
 ldap_bind_password: LDAP admin password
 user_base:          Base root for users eg. ou=Users,dc=example,dc=com
 site_url:           Load-balancer URL
-config_url:         Where the PWM configuration file is stored eg. /usr/share/pwm
+config_location:    Where the PWM configuration file is stored eg. /usr/share/pwm
 ```
 
 License
