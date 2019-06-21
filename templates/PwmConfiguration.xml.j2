@@ -12,14 +12,14 @@
   </properties>
   <settings>
     <setting key="pwm.securityKey" syntax="PASSWORD">
-        <label>Security Key</label>
-        <value plaintext="true">{{ security_key }}</value>
+      <label>Security Key</label>
+      <value plaintext="true">{{ security_key }}</value>
     </setting>
-    <setting key="template.ldap" syntax="SELECT" profile="default">
+    <setting key="template.ldap" syntax="SELECT">
       <label>LDAP Vendor Default Settings</label>
       <value><![CDATA[DEFAULT]]></value>
     </setting>
-    <setting key="template.storage" syntax="SELECT" profile="default">
+    <setting key="template.storage" syntax="SELECT">
       <label>Storage Default Settings</label>
       <value><![CDATA[LDAP]]></value>
     </setting>
@@ -47,59 +47,56 @@
       <label>LDAP Test User</label>
       <value><![CDATA[cn=NDelius01,{{ user_base }}]]></value>
     </setting>
-    <setting key="pwmAdmin.queryMatch" syntax="USER_PERMISSION" syntaxVersion="2" profile="default">
+    <setting key="pwmAdmin.queryMatch" syntax="USER_PERMISSION" syntaxVersion="2">
       <label>Administrator Permission</label>
       <value>{"ldapBase":"{{ user_base }}","ldapQuery":"(cn=*)","type":"ldapQuery"}</value>
     </setting>
-    <setting key="db.classname" syntax="STRING" profile="default">
-      <label>Database Class</label>
-      <value />
-    </setting>
-    <setting key="db.url" syntax="STRING" profile="default">
-      <label>Database Connection String</label>
-      <value />
-    </setting>
-    <setting key="db.username" syntax="STRING" profile="default">
-      <label>Database User Name</label>
-      <value />
-    </setting>
-    <setting key="db.password" syntax="PASSWORD" profile="default">
-      <label>Database Password</label>
-      <value />
-    </setting>
-    <setting key="pwm.publishStats.enable" syntax="BOOLEAN" profile="default">
+    <setting key="pwm.publishStats.enable" syntax="BOOLEAN">
       <label>Enable Anonymous Statistics Publishing</label>
       <value>false</value>
     </setting>
-    <setting key="pwm.publishStats.siteDescription" syntax="STRING" profile="default">
+    <setting key="pwm.publishStats.siteDescription" syntax="STRING">
       <label>Site Description</label>
       <value />
     </setting>
-    <setting key="pwm.selfURL" syntax="STRING" profile="default">
+    <setting key="pwm.selfURL" syntax="STRING">
       <label>Site URL</label>
       <value><![CDATA[{{ site_url }}]]></value>
     </setting>
-    <setting key="display.accountInformation" syntax="BOOLEAN" profile="default">
-      <label>Show User Account Information</label>
-      <value>true</value>
+    <setting key="pwm.introURL" syntax="SELECT">
+      <label>Intro URL</label>
+      <value><![CDATA[/public]]></value>
     </setting>
-    <setting key="display.showDetailedErrors" syntax="BOOLEAN" profile="default">
+    <setting key="display.showDetailedErrors" syntax="BOOLEAN">
       <label>Show Detailed Error Messages</label>
       <value>true</value>
     </setting>
-    <setting key="display.idleTimeout" syntax="BOOLEAN" profile="default">
+    <setting key="display.idleTimeout" syntax="BOOLEAN">
       <label>Show Idle Timeout Counter</label>
       <value>true</value>
+    </setting>
+    <setting key="display.accountInformation" syntax="BOOLEAN">
+      <label>Show User Account Information</label>
+      <value>true</value>
+    </setting>
+    <setting key="accountInfo.viewStatusValues" syntax="OPTIONLIST">
+      <label>Viewable Status Fields</label>
+      <value>PasswordSetTime</value>
+      <value>PasswordSetTimeDelta</value>
+      <value>PasswordViolatesPolicy</value>
+      <value>UserEmail</value>
+      <value>UserSMS</value>
+      <value>Username</value>
     </setting>
     <setting key="recovery.verificationMethods" syntax="VERIFICATION_METHOD" profile="default">
       <label>Verification Methods</label>
       <value><![CDATA[{"methodSettings":{"PREVIOUS_AUTH":{"enabledState":"disabled"},"ATTRIBUTES":{"enabledState":"disabled"},"CHALLENGE_RESPONSES":{"enabledState":"disabled"},"TOKEN":{"enabledState":"required"},"OTP":{"enabledState":"disabled"},"REMOTE_RESPONSES":{"enabledState":"disabled"},"OAUTH":{"enabledState":"disabled"}},"minOptionalRequired":0}]]></value>
     </setting>
-    <setting key="challenge.enable" syntax="BOOLEAN" profile="default">
+    <setting key="challenge.enable" syntax="BOOLEAN">
       <label>Enable Setup Responses</label>
       <value>false</value>
     </setting>
-    <setting key="challenge.forceSetup" syntax="BOOLEAN" profile="default">
+    <setting key="challenge.forceSetup" syntax="BOOLEAN"">
       <label>Force Response Setup</label>
       <value>false</value>
     </setting>
