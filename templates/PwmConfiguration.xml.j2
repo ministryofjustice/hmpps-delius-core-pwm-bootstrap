@@ -4,12 +4,17 @@
     <value><![CDATA[National Delius - Account Self Service]]></value>
   </localeBundle>
   <properties type="config">
+    <!-- Set saveConfigOnStart=true to encrypt plaintext passwords on startup -->
     <property key="saveConfigOnStart">true</property>
-    <property key="configPasswordHash">{{ 'changeme' | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) }}</property>
+    <property key="configPasswordHash">{{ config_password | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) }}</property>
     <property key="configIsEditable">false</property>
     <property key="configEpoch">1</property>
   </properties>
   <settings>
+    <setting key="pwm.securityKey" syntax="PASSWORD">
+        <label>Security Key</label>
+        <value plaintext="true">{{ security_key }}</value>
+    </setting>
     <setting key="template.ldap" syntax="SELECT" profile="default">
       <label>LDAP Vendor Default Settings</label>
       <value><![CDATA[DEFAULT]]></value>

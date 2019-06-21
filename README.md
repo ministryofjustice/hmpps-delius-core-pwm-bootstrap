@@ -17,8 +17,10 @@ ldap_port:          LDAP port
 ldap_bind_user:     LDAP admin username
 ldap_bind_password: LDAP admin password
 user_base:          Base root for users eg. ou=Users,dc=example,dc=com
-site_url:           Load-balancer URL
+site_url:           Front-end load balancer URL
 config_location:    Where the PWM configuration file is stored eg. /usr/share/pwm
+config_password:    Password required to edit the configuration through the GUI
+security_key:       Security key used for encrypting tokens etc
 ```
 
 License
