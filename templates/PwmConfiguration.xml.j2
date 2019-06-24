@@ -43,13 +43,17 @@
       <label>LDAP Contextless Login Roots</label>
       <value><![CDATA[{{ user_base }}]]></value>
     </setting>
+    <setting key="ldap.guidAttribute" syntax="STRING" profile="default">
+      <label>LDAP GUID Attribute</label>
+      <value><![CDATA[uid]]></value>
+    </setting>
     <setting key="ldap.testuser.username" syntax="STRING" profile="default">
       <label>LDAP Test User</label>
-      <value><![CDATA[cn=NDelius01,{{ user_base }}]]></value>
+      <value><![CDATA[cn=pwm-test,{{ user_base }}]]></value>
     </setting>
     <setting key="pwmAdmin.queryMatch" syntax="USER_PERMISSION" syntaxVersion="2">
       <label>Administrator Permission</label>
-      <value>{"ldapBase":"{{ user_base }}","ldapQuery":"(cn=*)","type":"ldapQuery"}</value>
+      <value>{"ldapBase":"{{ user_base }}","ldapQuery":"(pwmAdmin=true)","type":"ldapQuery"}</value>
     </setting>
     <setting key="pwm.publishStats.enable" syntax="BOOLEAN">
       <label>Enable Anonymous Statistics Publishing</label>
