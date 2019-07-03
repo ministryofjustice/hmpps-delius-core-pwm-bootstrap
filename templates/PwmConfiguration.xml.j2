@@ -6,7 +6,9 @@
   <properties type="config">
     <!-- Set saveConfigOnStart=true to encrypt plaintext passwords on startup -->
     <property key="saveConfigOnStart">true</property>
-    <property key="configPasswordHash">{{ config_password | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) | regex_replace('^\$2b', '$2a') }}</property>
+    {# Here the config_password is hashed using bcrypt with a random 22-character salt. We then swap the first three
+       characters from $2b to $2a which ensures we don't get a salt revision error when PWM attempts to verify it.
+    #}<property key="configPasswordHash">{{ config_password | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) | regex_replace('^\$2b', '$2a') }}</property>
     <property key="configIsEditable">false</property>
     <property key="configEpoch">1</property>
   </properties>
@@ -135,6 +137,14 @@
     <setting key="password.policy.disallowedValues" syntax="STRING_ARRAY" profile="default">
       <label>Disallowed Values</label>
       <value />
+    </setting>
+    <setting key="email.smtp.address" syntax="STRING" profile="default">
+      <label>SMTP Server Address</label>
+      <value><![CDATA[{{ email_smtp_address }}]]></value>
+    </setting>
+    <setting key="email.default.fromAddress" syntax="STRING">
+      <label>Default From Address</label>
+      <value><![CDATA[{{ email_from_address }} ]]></value>
     </setting>
   </settings>
 </PwmConfiguration>
