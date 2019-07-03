@@ -6,7 +6,7 @@
   <properties type="config">
     <!-- Set saveConfigOnStart=true to encrypt plaintext passwords on startup -->
     <property key="saveConfigOnStart">true</property>
-    <property key="configPasswordHash">{{ config_password | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) }}</property>
+    <property key="configPasswordHash">{{ config_password | password_hash('blowfish', lookup('password', '/dev/null chars=ascii_letters,digits length=22')) | regex_replace('^\$2b', '$2a') }}</property>
     <property key="configIsEditable">false</property>
     <property key="configEpoch">1</property>
   </properties>
